@@ -5,6 +5,7 @@ module Markdown
     # Converts a Markdown unordered list item to a Textile unordered list item.
     # Nesting depth is determined by leading indentation (2 spaces per level),
     # offset by +list_depth+ (default: 3).
+    # Odd-numbered spaces are rounded down: 1 space is treated the same as 0 spaces.
     #
     # | Input (Markdown)    | list_depth | Output (Textile) |
     # |---------------------|------------|------------------|

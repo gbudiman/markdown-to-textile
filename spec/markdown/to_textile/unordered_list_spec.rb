@@ -23,6 +23,10 @@ RSpec.describe Markdown::ToTextile::UnorderedList do
     expect(described_class.execute('  - nested', list_depth: 1)).to eq('** nested')
   end
 
+  it 'treats 1-space indent the same as no indent (floor division)' do
+    expect(described_class.execute(' - item')).to eq('*** item')
+  end
+
   it 'leaves non-list lines unchanged' do
     expect(described_class.execute('plain text')).to eq('plain text')
   end

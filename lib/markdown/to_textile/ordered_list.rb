@@ -4,6 +4,7 @@ module Markdown
   class ToTextile
     # Converts a Markdown ordered list item to a Textile ordered list item.
     # Nesting depth is determined by leading indentation (2 spaces per level).
+    # Odd-numbered spaces are rounded down: 1 space is treated the same as 0 spaces.
     #
     # | Input (Markdown)    | Output (Textile) |
     # |---------------------|------------------|
