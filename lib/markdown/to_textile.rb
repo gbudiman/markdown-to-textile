@@ -7,8 +7,9 @@ require 'markdown/to_textile/ordered_list'
 
 module Markdown
   class ToTextile
-    def initialize(header_level: 'h3')
+    def initialize(header_level: 'h3', list_depth: 3)
       @header_level = header_level
+      @list_depth = list_depth
     end
 
     def convert(input)
@@ -20,7 +21,7 @@ module Markdown
     def convert_line(line)
       line = Header.execute(line, header_level: @header_level)
       line = Bold.execute(line)
-      line = UnorderedList.execute(line)
+      line = UnorderedList.execute(line, list_depth: @list_depth)
       OrderedList.execute(line)
     end
   end

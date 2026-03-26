@@ -3,16 +3,24 @@
 require 'spec_helper'
 
 RSpec.describe Markdown::ToTextile::UnorderedList do
-  it 'converts a depth-1 item' do
-    expect(described_class.execute('- item')).to eq('* item')
+  it 'uses triple asterisks by default for a depth-1 item' do
+    expect(described_class.execute('- item')).to eq('*** item')
   end
 
-  it 'converts a depth-2 item (2-space indent)' do
-    expect(described_class.execute('  - nested')).to eq('** nested')
+  it 'uses triple asterisks by default for a depth-2 item (2-space indent)' do
+    expect(described_class.execute('  - nested')).to eq('**** nested')
   end
 
-  it 'converts a depth-3 item (4-space indent)' do
-    expect(described_class.execute('    - deep')).to eq('*** deep')
+  it 'uses triple asterisks by default for a depth-3 item (4-space indent)' do
+    expect(described_class.execute('    - deep')).to eq('***** deep')
+  end
+
+  it 'respects a custom list_depth' do
+    expect(described_class.execute('- item', list_depth: 1)).to eq('* item')
+  end
+
+  it 'respects a custom list_depth for nested items' do
+    expect(described_class.execute('  - nested', list_depth: 1)).to eq('** nested')
   end
 
   it 'leaves non-list lines unchanged' do

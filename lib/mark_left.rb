@@ -1,10 +1,24 @@
 # frozen_string_literal: true
 
 require 'mark_left/version'
+require 'mark_left/configuration'
 require 'markdown/to_textile'
 
 module MarkLeft
-  def self.convert(markdown, **options)
-    Markdown::ToTextile.new(**options).convert(markdown)
+  class << self
+    attr_writer :configuration
+
+    def configuration
+      @configuration ||= Configuration.new
+    end
+
+    def configure
+      yield configuration
+    end
+
+    def convert(markdown, **options)
+      merged = { header_level: configuration.header_level, list_depth: configuration.list_depth }.merge(options)
+      Markdown::ToTextile.new(**merged).convert(markdown)
+    end
   end
 end
