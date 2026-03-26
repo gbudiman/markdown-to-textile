@@ -7,21 +7,21 @@ RSpec.describe Markdown::ToTextile do
 
   let(:full_document_expected) do
     <<~TEXTILE
-      h3. Title
+      h3. *Title*
       * item one
-      * item two
-      ** nested
-      # first
+      * *item two*
+      ** nested with *bold*
+      # *first*
       # second
     TEXTILE
   end
   let(:full_document_input) do
     <<~MD
-      # Title
+      # **Title**
       - item one
-      - item two
-        - nested
-      1. first
+      - **item two**
+        - nested with **bold**
+      1. **first**
       1. second
     MD
   end
