@@ -51,8 +51,8 @@ RSpec.describe MdxTex::ToTextile do
     expect { described_class.new(list_depth: 'x') }.to raise_error(MdxTex::ToTextile::InvalidListDepthError)
   end
 
-  it 'returns empty string for nil input' do
-    expect(converter.execute(nil)).to eq('')
+  it 'returns nil for nil input' do
+    expect(converter.execute(nil)).to be_nil
   end
 
   it 'converts numeric input to string' do

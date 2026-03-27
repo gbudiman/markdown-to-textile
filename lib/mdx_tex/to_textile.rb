@@ -17,7 +17,7 @@ module MdxTex
     end
 
     def execute(input)
-      return '' if input.nil?
+      return nil if input.nil?
 
       input.to_s.split("\n", -1).map { |line| convert_line(line) }.join("\n")
     end
