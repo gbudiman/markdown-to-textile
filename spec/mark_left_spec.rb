@@ -3,17 +3,17 @@
 require 'spec_helper'
 
 RSpec.describe MarkLeft do
-  describe '.convert' do
+  describe '.to_textile' do
     it 'converts markdown using default configuration' do
-      expect(described_class.convert('# Heading')).to eq('h3. Heading')
+      expect(described_class.to_textile(markdown: '# Heading')).to eq('h3. Heading')
     end
 
     it 'accepts per-call header_level override' do
-      expect(described_class.convert('# Heading', header_level: 'h1')).to eq('h1. Heading')
+      expect(described_class.to_textile(markdown: '# Heading', header_level: 'h1')).to eq('h1. Heading')
     end
 
     it 'accepts per-call list_depth override' do
-      expect(described_class.convert('- item', list_depth: 1)).to eq('* item')
+      expect(described_class.to_textile(markdown: '- item', list_depth: 1)).to eq('* item')
     end
   end
 
@@ -28,19 +28,19 @@ RSpec.describe MarkLeft do
     end
 
     it 'applies configured header_level globally' do
-      expect(described_class.convert('# Heading')).to eq('h1. Heading')
+      expect(described_class.to_textile(markdown: '# Heading')).to eq('h1. Heading')
     end
 
     it 'applies configured list_depth globally' do
-      expect(described_class.convert('- item')).to eq('* item')
+      expect(described_class.to_textile(markdown: '- item')).to eq('* item')
     end
 
     it 'allows per-call header_level to override global config' do
-      expect(described_class.convert('# Heading', header_level: 'h2')).to eq('h2. Heading')
+      expect(described_class.to_textile(markdown: '# Heading', header_level: 'h2')).to eq('h2. Heading')
     end
 
     it 'allows per-call list_depth to override global config' do
-      expect(described_class.convert('- item', list_depth: 2)).to eq('** item')
+      expect(described_class.to_textile(markdown: '- item', list_depth: 2)).to eq('** item')
     end
   end
 

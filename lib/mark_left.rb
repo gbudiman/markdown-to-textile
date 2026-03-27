@@ -16,7 +16,7 @@ module MarkLeft
       yield configuration
     end
 
-    def convert(markdown, **options)
+    def to_textile(markdown:, **options)
       merged = { header_level: configuration.header_level, list_depth: configuration.list_depth }.merge(options)
       Markdown::ToTextile.new(**merged).convert(markdown)
     end
