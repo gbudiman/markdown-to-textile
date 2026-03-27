@@ -1,8 +1,10 @@
 # mdx-tex
 
-A Ruby gem that converts Markdown (MDX) syntax to Textile. Pure Ruby with no runtime dependencies.
+A Ruby gem that converts Markdown (MDX) syntax to Textile — for those of you unfortunate enough to have to maintain a legacy system that relies on Textile.
 
-> **Note:** Currently only MDX -> Textile conversion is supported.
+Pure Ruby with no runtime dependencies.
+
+> **Note:** Currently only supports MDX -> Textile conversion. Textile -> MDX conversion is on the roadmap.
 
 ## Installation
 
