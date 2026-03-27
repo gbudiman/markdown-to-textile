@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module MarkLeft
+module MdxTex
   class ToTextile
     # Converts a Markdown heading to a Textile heading.
     # The caller supplies the desired Textile header tag via +header_level+.

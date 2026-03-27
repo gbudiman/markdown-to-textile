@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/mark_left/version'
+require_relative 'lib/mdx_tex/version'
 
 Gem::Specification.new do |spec|
   spec.name    = 'mdx-tex'
-  spec.version = MarkLeft::VERSION
+  spec.version = MdxTex::VERSION
   spec.summary     = 'Convert between Markdown and Textile'
   spec.description = 'Converts Markdown syntax to Textile syntax, with configurable header levels and list depth.'
   spec.authors     = ['Gloria Budiman']

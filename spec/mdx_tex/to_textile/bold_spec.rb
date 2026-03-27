@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe MarkLeft::ToTextile::Bold do
+RSpec.describe MdxTex::ToTextile::Bold do
   it 'converts **text**' do
     expect(described_class.execute('**bold**')).to eq('*bold*')
   end

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe MarkLeft::ToTextile do
+RSpec.describe MdxTex::ToTextile do
   subject(:converter) { described_class.new }
 
   let(:input) do
@@ -32,42 +32,42 @@ RSpec.describe MarkLeft::ToTextile do
   end
 
   it 'raises InvalidHeaderLevelError for an invalid header_level' do
-    expect { described_class.new(header_level: 'h7') }.to raise_error(MarkLeft::ToTextile::InvalidHeaderLevelError)
+    expect { described_class.new(header_level: 'h7') }.to raise_error(MdxTex::ToTextile::InvalidHeaderLevelError)
   end
 
   it 'raises InvalidHeaderLevelError for a non-string header_level' do
-    expect { described_class.new(header_level: 3) }.to raise_error(MarkLeft::ToTextile::InvalidHeaderLevelError)
+    expect { described_class.new(header_level: 3) }.to raise_error(MdxTex::ToTextile::InvalidHeaderLevelError)
   end
 
   it 'raises InvalidListDepthError for zero list_depth' do
-    expect { described_class.new(list_depth: 0) }.to raise_error(MarkLeft::ToTextile::InvalidListDepthError)
+    expect { described_class.new(list_depth: 0) }.to raise_error(MdxTex::ToTextile::InvalidListDepthError)
   end
 
   it 'raises InvalidListDepthError for negative list_depth' do
-    expect { described_class.new(list_depth: -1) }.to raise_error(MarkLeft::ToTextile::InvalidListDepthError)
+    expect { described_class.new(list_depth: -1) }.to raise_error(MdxTex::ToTextile::InvalidListDepthError)
   end
 
   it 'raises InvalidListDepthError for non-integer list_depth' do
-    expect { described_class.new(list_depth: 'x') }.to raise_error(MarkLeft::ToTextile::InvalidListDepthError)
+    expect { described_class.new(list_depth: 'x') }.to raise_error(MdxTex::ToTextile::InvalidListDepthError)
   end
 
   it 'returns empty string for nil input' do
-    expect(converter.convert(nil)).to eq('')
+    expect(converter.execute(nil)).to eq('')
   end
 
   it 'converts numeric input to string' do
-    expect(converter.convert(42)).to eq('42')
+    expect(converter.execute(42)).to eq('42')
   end
 
   it 'converts bold inside a list item' do
-    expect(converter.convert('- **bold** text')).to eq('*** *bold* text')
+    expect(converter.execute('- **bold** text')).to eq('*** *bold* text')
   end
 
   it 'converts bold inside a header' do
-    expect(converter.convert('# **Bold** header')).to eq('h3. *Bold* header')
+    expect(converter.execute('# **Bold** header')).to eq('h3. *Bold* header')
   end
 
   it 'converts a full document' do
-    expect(converter.convert(input)).to eq(output)
+    expect(converter.execute(input)).to eq(output)
   end
 end

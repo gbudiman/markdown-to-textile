@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gemspec
+gemspec name: 'mdx-tex'
 
 group :development do
   gem 'overcommit'

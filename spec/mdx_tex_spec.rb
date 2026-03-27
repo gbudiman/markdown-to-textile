@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe MarkLeft do
+RSpec.describe MdxTex do
   describe '.to_textile' do
     it 'converts markdown using default configuration' do
       expect(described_class.to_textile(markdown: '# Heading')).to eq('h3. Heading')
@@ -44,7 +44,7 @@ RSpec.describe MarkLeft do
     end
   end
 
-  describe MarkLeft::Configuration do
+  describe MdxTex::Configuration do
     subject(:config) { described_class.new }
 
     it 'defaults header_level to h3' do
@@ -66,19 +66,19 @@ RSpec.describe MarkLeft do
     end
 
     it 'raises InvalidHeaderLevelError for an invalid header_level' do
-      expect { config.header_level = 'h7' }.to raise_error(MarkLeft::ToTextile::InvalidHeaderLevelError)
+      expect { config.header_level = 'h7' }.to raise_error(MdxTex::ToTextile::InvalidHeaderLevelError)
     end
 
     it 'raises InvalidHeaderLevelError for a non-string header_level' do
-      expect { config.header_level = 3 }.to raise_error(MarkLeft::ToTextile::InvalidHeaderLevelError)
+      expect { config.header_level = 3 }.to raise_error(MdxTex::ToTextile::InvalidHeaderLevelError)
     end
 
     it 'raises InvalidListDepthError for zero list_depth' do
-      expect { config.list_depth = 0 }.to raise_error(MarkLeft::ToTextile::InvalidListDepthError)
+      expect { config.list_depth = 0 }.to raise_error(MdxTex::ToTextile::InvalidListDepthError)
     end
 
     it 'raises InvalidListDepthError for a non-integer list_depth' do
-      expect { config.list_depth = 'x' }.to raise_error(MarkLeft::ToTextile::InvalidListDepthError)
+      expect { config.list_depth = 'x' }.to raise_error(MdxTex::ToTextile::InvalidListDepthError)
     end
   end
 end
