@@ -6,6 +6,7 @@ gemspec name: 'mdx-tex'
 
 group :development do
   gem 'overcommit'
+  gem 'rake'
   gem 'rspec'
   gem 'rubocop'
   gem 'rubocop-rspec'
